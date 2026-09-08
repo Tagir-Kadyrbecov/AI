@@ -15,10 +15,7 @@ class GeminiService:
         self.client = genai.Client(api_key=gemini_api_key)
 
     def chat_with_gemini(self, message: str, file: UploadFile):
-        # Читаем байты из объекта UploadFile
         file_bytes = file.file.read()
-
-        # Формируем объект Part для Gemini
         document_part = types.Part.from_bytes(
             data=file_bytes,
             mime_type=file.content_type or "application/pdf"
